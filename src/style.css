@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --font-roboto: 'Roboto Mono', monospace;
+
+  --animate-pulse-slow-once: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) 1;
+  --animate-fade-in: fade-in 0.5s ease-in-out 3s forwards;
+
+  --spacing-7_75: 1.9375rem;
+  --spacing-13_5: 3.375rem;
+  --spacing-14_5: 3.625rem;
+  --spacing-16_5: 4.125rem;
+  --spacing-25_25: 6.3125rem;
+  --spacing-26_5: 6.625rem;
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+[x-cloak] { display: none !important; }

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surgical Sledgehammer</title>
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet" />
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body class="font-roboto antialiased bg-gray-100 dark:bg-black text-gray-700 dark:text-stone-400">
+
+  <!-- Navigation -->
+  <div
+    x-cloak
+    class="sticky z-50 top-0 w-full bg-stone-200 dark:bg-gray-900 transition-all text-sm md:text-base"
+    x-data="{ scrolled: false }"
+    x-init="window.addEventListener('scroll', () => { scrolled = true })"
+    :class="{ 'opacity-0': !scrolled, 'opacity-100': scrolled }"
+  >
+    <div class="max-w-6xl px-4 flex flex-nowrap gap-2 mx-auto items-center" style="height: 48px;">
+      <a href="/" class="h-full py-[4px]">
+        <div class="hidden dark:block rounded-xl bg-cover bg-center h-full aspect-square" style="background-image: url('/images/logo-dark-small.png');"></div>
+        <div class="block dark:hidden rounded-xl bg-cover bg-center h-full aspect-square" style="background-image: url('/images/logo-light-small.png');"></div>
+      </a>
+      <div class="grow"></div>
+      <a href="/portfolio.html" class="px-2 pt-[4px] h-full grid place-content-center text-blue-700 border-b-[4px] border-transparent hover:border-blue-700 font-semibold tracking-wide">Portfolio</a>
+      <a href="/contact.html" class="px-2 pt-[4px] h-full grid place-content-center text-blue-700 border-b-[4px] border-transparent hover:border-blue-700 font-semibold tracking-wide">Contact</a>
+    </div>
+  </div>
+
+  <!-- Hero: Animation + Tagline -->
+  <div style="height: calc(100vh - 48px);">
+    <div class="h-full grid place-content-center gap-4">
+
+      <!-- Hammer-to-Sword Animation -->
+      <div class="h-64 w-64 mx-auto">
+        <div
+          class="relative h-32 w-32 scale-[200%] translate-x-1/2 translate-y-1/2 animate-pulse-slow-once"
+          x-data="{ anim: -10 }"
+          x-init="const interval = setInterval(() => {
+            anim++;
+            document.querySelectorAll(`.triggerOnAnimStep${anim}`).forEach((el) => {
+              el.beginElement();
+            })
+            if (anim >= 10) { clearInterval(interval); }
+          }, 100)"
+          x-cloak
+        >
+          <div class="absolute h-32 w-32 inset-0 [&>*]:absolute [&>svg>polygon]:fill-current [&>*]:transition-all [&>*]:duration-[500ms]">
+
+            <!-- Left hammer edge -->
+            <svg width="3" height="8" viewBox="0 0 3 8" class="left-6 top-6 h-8 w-3"
+              :class="{
+                'left-6 top-6 h-8 w-3 text-stone-950 dark:text-stone-800 stroke-stone-950 dark:stroke-stone-950': anim < 7,
+                'left-5 top-9 h-8 w-3 rotate-[-45deg] text-stone-600 dark:text-stone-600 stroke-blue-900 dark:stroke-orange-700': anim >= 7,
+              }">
+              <polygon points="0,0 0,8 2,7 2,1 3,0" stroke-width="0">
+                <animate class="triggerOnAnimStep7" attributeName="stroke-width" from="0" :to="anim >= 7 ? 0.25 : 0" dur="500ms" fill="freeze" />
+              </polygon>
+            </svg>
+
+            <!-- Right hammer edge -->
+            <svg width="3" height="8" viewBox="0 0 3 8" class="left-23 top-6 h-8 w-3"
+              :class="{
+                'left-23 top-6 h-8 w-3 text-stone-950 dark:text-stone-800 stroke-stone-950 dark:stroke-stone-950': anim < 7,
+                'left-24 top-9 h-8 w-3 rotate-[45deg] text-stone-600 dark:text-stone-600 stroke-blue-900 dark:stroke-orange-700': anim >= 7,
+              }">
+              <polygon points="3,0 3,8 1,7 1,1 0,0" stroke-width="0">
+                <animate class="triggerOnAnimStep7" attributeName="stroke-width" from="0" :to="anim >= 7 ? 0.25 : 0" dur="500ms" fill="freeze" />
+              </polygon>
+            </svg>
+
+            <!-- Left hammer bottom -->
+            <svg width="7" height="2" viewBox="0 0 7 2" class="left-6 top-12 h-2 w-7"
+              :class="{
+                'left-6 top-12 h-2 w-7 text-stone-950 dark:text-stone-800 stroke-stone-950 dark:stroke-stone-950': anim < 7,
+                'left-8 top-11 h-2 w-4 rotate-[-45deg] text-stone-600 dark:text-stone-600 stroke-blue-900 dark:stroke-orange-700': anim >= 7,
+              }">
+              <polygon points="0,2 6,2 7,1 1,1" stroke-width="0">
+                <animate class="triggerOnAnimStep7" attributeName="stroke-width" from="0" :to="anim >= 7 ? 0.25 : 0" dur="500ms" fill="freeze" />
+              </polygon>
+            </svg>
+
+            <!-- Right hammer bottom -->
+            <svg width="7" height="2" viewBox="0 0 7 2" class="left-19 top-12 h-2 w-7"
+              :class="{
+                'left-19 top-12 h-2 w-7 text-stone-950 dark:text-stone-800 stroke-stone-950 dark:stroke-stone-950': anim < 7,
+                'left-20 top-11 h-2 w-4 rotate-[45deg] text-stone-600 dark:text-stone-600 stroke-blue-900 dark:stroke-orange-700': anim >= 7,
+              }">
+              <polygon points="7,2 1,2 0,1 6,1" stroke-width="0">
+                <animate class="triggerOnAnimStep7" attributeName="stroke-width" from="0" :to="anim >= 7 ? 0.25 : 0" dur="500ms" fill="freeze" />
+              </polygon>
+            </svg>
+
+            <!-- Left hammer inner -->
+            <svg width="5" height="7" viewBox="0 0 5 7" class="h-7 w-5"
+              :class="{
+                'left-8 top-6 text-stone-950 dark:text-stone-800 stroke-stone-950 dark:stroke-stone-950': anim < 7,
+                'left-7 top-7 rotate-[-45deg] text-stone-600 dark:text-stone-600 stroke-blue-900 dark:stroke-orange-700': anim >= 7,
+              }">
+              <polygon points="1,0 0,1 0,7 5,7 5,1 4,0" stroke-width="0">
+                <animate class="triggerOnAnimStep7" attributeName="points" from="1,0 0,1 0,7 5,7 5,1 4,0" :to="anim >= 7 ? '1,0 0,1 0,4 4,4 4,2 2,0' : '1,0 0,1 0,7 5,7 5,1 4,0'" dur="500ms" fill="freeze" />
+                <animate class="triggerOnAnimStep7" attributeName="stroke-width" from="0" :to="anim >= 7 ? 0.25 : 0" dur="500ms" fill="freeze" />
+              </polygon>
+            </svg>
+
+            <!-- Right hammer inner -->
+            <svg width="5" height="7" viewBox="0 0 5 7" class="h-7 w-5"
+              :class="{
+                'left-19 top-6 text-stone-950 dark:text-stone-800 stroke-stone-950 dark:stroke-stone-950': anim < 7,
+                'left-20 top-7 rotate-[45deg] text-stone-600 dark:text-stone-600 stroke-blue-900 dark:stroke-orange-700': anim >= 7,
+              }">
+              <polygon points="4,0 5,1 5,7 0,7 0,1 1,0" stroke-width="0">
+                <animate class="triggerOnAnimStep7" attributeName="points" from="4,0 5,1 5,7 0,7 0,1 1,0" :to="anim >= 7 ? '4,0 5,1 5,4 1,4 1,2 3,0' : '4,0 5,1 5,7 0,7 0,1 1,0'" dur="500ms" fill="freeze" />
+                <animate class="triggerOnAnimStep7" attributeName="stroke-width" from="0" :to="anim >= 7 ? 0.25 : 0" dur="500ms" fill="freeze" />
+              </polygon>
+            </svg>
+
+            <!-- Spear -->
+            <svg width="12" height="8" viewBox="0 0 12 8" class="left-10 h-8 w-12"
+              :class="{
+                'text-stone-950 dark:text-stone-800 stroke-stone-950 dark:stroke-stone-950 top-5': anim < 6,
+                'text-stone-600 dark:text-stone-600 stroke-blue-900 dark:stroke-orange-700 top-2': anim >= 6,
+              }">
+              <polygon points="6,0 2,4 3,4 1.5,5.5 1,5 0,6 2,8 6,4 10,8 12,6 11,5 10.5,5.5 9,4 10,4" stroke-width="0">
+                <animate class="triggerOnAnimStep6" attributeName="stroke-width" from="0" :to="anim >= 6 ? 0.25 : 0" dur="500ms" fill="freeze" />
+              </polygon>
+            </svg>
+
+            <!-- Center -->
+            <div class="grid grid-cols-2 grid-rows-2 z-10 rotate-[-45deg] border-0 !duration-[500ms]"
+              :class="{
+                'gap-0 h-5 w-5 left-13_5 top-10 bg-stone-950 dark:bg-stone-800': anim < 5,
+                'gap-0.5 h-5 w-5 left-13_5 top-7_75 scale-[90%] !bg-gray-100 dark:!bg-black bg-blue-900 dark:bg-orange-700 border': anim >= 5
+              }">
+              <div class="border transition-all duration-[400ms] delay-[100ms]"
+                :class="{
+                  'border-stone-950 dark:border-stone-800 bg-stone-950 dark:bg-stone-800': anim < 7,
+                  'border-blue-900 dark:border-orange-700 bg-stone-600 dark:bg-stone-600': anim >= 7,
+                }"></div>
+              <div class="border transition-all duration-[350ms] delay-[150ms]"
+                :class="{
+                  'border-stone-950 dark:border-stone-800 bg-stone-950 dark:bg-stone-800': anim < 7,
+                  'border-blue-900 dark:border-orange-700 bg-stone-600 dark:bg-stone-600': anim >= 7,
+                }"></div>
+              <div class="border transition-all duration-[500ms]"
+                :class="{
+                  'border-stone-950 dark:border-stone-800 bg-stone-950 dark:bg-stone-800': anim < 7,
+                  'border-blue-900 dark:border-orange-700 bg-stone-600 dark:bg-stone-600': anim >= 7,
+                }"></div>
+              <div class="border transition-all duration-[400ms] delay-[100ms]"
+                :class="{
+                  'border-stone-950 dark:border-stone-800 bg-stone-950 dark:bg-stone-800': anim < 7,
+                  'border-blue-900 dark:border-orange-700 bg-stone-600 dark:bg-stone-600': anim >= 7,
+                }"></div>
+            </div>
+
+            <!-- Hilt top right -->
+            <svg width="2" height="8" viewBox="0 0 2 8" class="left-16 top-14 w-2"
+              :class="{
+                'h-8 text-stone-950 dark:text-stone-800 stroke-stone-950 dark:stroke-stone-950': anim < 4,
+                'h-7 text-stone-600 dark:text-stone-600 stroke-blue-900 dark:stroke-orange-700': anim >= 4,
+              }">
+              <polygon points="0,0 0,4 2,8 2,0" stroke-width="0">
+                <animate class="triggerOnAnimStep4" attributeName="points" from="0,0 0,4 2,6 2,0" :to="anim >= 4 ? '0,0 0,2 2,4 2,0' : '0,0 0,4 2,6 2,0'" dur="500ms" fill="freeze" />
+                <animate class="triggerOnAnimStep4" attributeName="stroke-width" from="0" :to="anim >= 4 ? 0.25 : 0" dur="500ms" fill="freeze" />
+              </polygon>
+            </svg>
+
+            <!-- Hilt middle snake -->
+            <svg width="4" height="9" viewBox="0 0 4 9" class="left-14 top-14 h-9 w-4"
+              :class="{
+                'text-stone-950 dark:text-stone-800 stroke-stone-950 dark:stroke-stone-950': anim < 4,
+                'text-stone-600 dark:text-stone-600 stroke-blue-900 dark:stroke-orange-700': anim >= 4,
+              }">
+              <polygon points="0,0 0,5 3,8 3,8 4,9 4,6 2,4 2,0" stroke-width="0">
+                <animate class="triggerOnAnimStep4" attributeName="points" from="0,0 0,5 3,8 3,8 4,9 4,6 2,4 2,0" :to="anim >= 4 ? '0,0 0,3 3,6 3,7 4,8 4,5 1,2 1,0' : '0,0 0,5 3,8 3,8 4,9 4,6 2,4 2,0'" dur="500ms" fill="freeze" />
+                <animate class="triggerOnAnimStep4" attributeName="stroke-width" from="0" :to="anim >= 4 ? 0.25 : 0" dur="500ms" fill="freeze" />
+              </polygon>
+            </svg>
+
+            <!-- Hilt middle left triangle -->
+            <svg width="4" height="4" viewBox="0 0 4 4" class="h-4 w-4 left-14 top-19"
+              :class="{
+                'text-stone-950 dark:text-stone-800 stroke-stone-950 dark:stroke-stone-950': anim < 3,
+                'text-stone-600 dark:text-stone-600 stroke-blue-900 dark:stroke-orange-700 mt-[-3px]': anim >= 3,
+              }">
+              <polygon points="0,0 0,4 2,2" stroke-width="0">
+                <animate class="triggerOnAnimStep3" attributeName="stroke-width" from="0" :to="anim >= 3 ? 0.25 : 0" dur="500ms" fill="freeze" />
+              </polygon>
+            </svg>
+
+            <!-- Bottom hilt center diamond -->
+            <div class="rotate-45"
+              :class="{
+                'h-5 w-5 left-13_5 top-22 rotate-45 bg-stone-950 dark:bg-stone-800 border-stone-950 dark:border-stone-800': anim < 2,
+                'left-14_5 top-22 h-3 w-3 rotate-45 border bg-stone-600 dark:bg-stone-600 border-blue-900 dark:border-orange-700': anim >= 2,
+              }"></div>
+
+            <!-- Bottom hilt, left bar -->
+            <div class="w-4 rotate-0 border"
+              :class="{
+                'h-4 top-24 left-12 bg-stone-950 dark:bg-stone-800 border-stone-950 dark:border-stone-800': anim < 1,
+                'h-2 top-25 left-11.5 rotate-45 bg-stone-600 dark:bg-stone-600 border-blue-900 dark:border-orange-700': anim >= 1,
+              }"></div>
+
+            <!-- Bottom hilt, right bar -->
+            <div class="w-4 rotate-0 border"
+              :class="{
+                'h-4 top-24 left-16 bg-stone-950 dark:bg-stone-800 border-stone-950 dark:border-stone-800': anim < 1,
+                'h-2 top-25 left-16_5 rotate-[-45deg] bg-stone-600 dark:bg-stone-600 border-blue-900 dark:border-orange-700': anim >= 1,
+              }"></div>
+
+            <!-- Bottom of hilt -->
+            <div class="rotate-[-45deg] h-2 w-2 left-15 border"
+              :class="{
+                'top-25 bg-stone-950 dark:bg-stone-800 border-stone-950 dark:border-stone-800': anim < 1,
+                'top-26_5 mt-[4px] bg-stone-600 dark:bg-stone-600 border-blue-900 dark:border-orange-700': anim >= 1,
+              }"></div>
+
+          </div>
+        </div>
+      </div>
+
+      <h2 class="font-black text-2xl md:text-3xl px-8 text-center">Surgical Sledgehammer</h2>
+      <p class="font-semibold text-md md:text-lg text-center">
+        <span>Sharp solutions.</span>
+        <span>High impact.</span>
+      </p>
+
+      <div class="absolute grid inset-0 items-end justify-center opacity-0 animate-fade-in">
+        <svg fill="#000000" height="800px" width="800px" viewBox="0 0 330 330" class="h-8 w-8 my-8 animate-bounce fill-current text-stone-600">
+          <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
+            c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
+            s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stream of consciousness -->
+  <div
+    class="flex flex-col items-center gap-4 py-8 bg-gray-100 dark:bg-gradient-to-b dark:from-black dark:to-stone-900 text-gray-700 dark:text-stone-400"
+    style="min-height: calc(100vh - 48px);"
+  >
+    <h2 class="text-4xl tracking-widest">what?</h2>
+
+    <div class="max-w-xl w-full mx-auto px-4 text-xl space-y-2">
+      <h2 class="text-left text-blue-800 dark:text-stone-300">i write code</h2>
+      <h2 class="text-right text-blue-800 dark:text-stone-300">im pretty good at it</h2>
+      <h2 class="text-left text-blue-800 dark:text-stone-300">i started at 19</h2>
+      <h2 class="text-right text-blue-800 dark:text-stone-300">haven't missed a week<br>yet</h2>
+      <h2 class="text-left text-blue-800 dark:text-stone-300">i have a corporate job now</h2>
+      <h2 class="text-right text-blue-800 dark:text-stone-300">it's stable</h2>
+      <h2 class="text-left text-blue-800 dark:text-stone-300">but i liked talking to customers</h2>
+      <h2 class="text-right text-blue-800 dark:text-stone-300">give me your project</h2>
+      <h2 class="text-left text-blue-800 dark:text-stone-300">and ill get it done</h2>
+      <h2 class="text-right text-blue-800 dark:text-stone-300">pay me</h2>
+      <h2 class="text-left text-blue-800 dark:text-stone-300">Please.</h2>
+      <h2 class="text-right text-blue-800 dark:text-stone-300"></h2>
+      <h2 class="text-left text-blue-800 dark:text-stone-300"><br><br>I like coding.</h2>
+    </div>
+
+    <div class="grow"></div>
+
+    <a href="/contact.html" class="text-3xl text-blue-700 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 font-semibold transition-colors">
+      Hire me
+    </a>
+  </div>
+
+</body>
+</html>
